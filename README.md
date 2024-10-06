@@ -2,6 +2,8 @@
 
 Shoppinator is a system designed to optimize online shopping by allowing users to compare prices across different online stores. The system is built with design patterns to ensure flexibility, scalability, and the ability to add new stores dynamically without modifying the core system.
 
+[![Watch the video](https://github.com/user-attachments/assets/4909285c-3122-4b95-bdf2-dda2fbf52dac)](https://youtu.be/JIL18kWoF9U)
+
 ## Project Structure
 
 This repository is divided into three main submodules, each representing a key component of the system:
@@ -9,6 +11,8 @@ This repository is divided into three main submodules, each representing a key c
 - **[UI](https://github.com/FrancoBre/pp2-gui/tree/iteracion-1)**: The user interface for interacting with the system.
 - **[CORE](https://github.com/maxisandoval37/pp2-core/tree/iteracion-1)**: The core logic of the system, which handles the model and business rules.
 - **[EXT](https://github.com/FrancoBre/pp2-ext/tree/stores-scrapers)**: Extensions that allow for the addition of new stores in a modular way.
+
+![image](https://github.com/user-attachments/assets/0b0d71d5-fcc7-4b99-9717-1c8a85f03ed2)
 
 ---
 
@@ -26,6 +30,9 @@ Shoppinator allows users to search for products across multiple online stores. T
   String name = articleElement.select("div.product-card-design6-vertical__name").text();
   ```
 
+  ![image](https://github.com/user-attachments/assets/d2f5dce8-cb56-4948-9c0d-a67aff3e4367)
+
+
 ---
 
 Additionally, URL queries (e.g., ?keyword=mouse) were leveraged to optimize the search process, reducing resource consumption and speeding up response times.
@@ -35,6 +42,13 @@ The system allows users to filter the search results by setting a minimum and/or
 
  - **Pattern Used: Criteria Pattern**
 The price filtering functionality is implemented using the Criteria Pattern from [GOF]. A PriceSearchCriteria object is created during the initialization of Shoppinator. The PriceSearchCriteria works as an independent, modular component that can filter products based on price and can easily be extended to handle other criteria in the future.
+
+![image](https://github.com/user-attachments/assets/edc06b85-0325-4faa-8592-8b06a1f6d1a6)
+
+![image](https://github.com/user-attachments/assets/5f1f5f8c-91f6-4e77-8f90-b9c574a6a1dc)
+
+![image](https://github.com/user-attachments/assets/4fe42d77-6ba3-42b4-823a-fd7a6ec83068)
+
 
  - **Implementation Details:**
 When a search query is executed, PriceSearchCriteria filters the products by invoking:
@@ -69,6 +83,11 @@ The system can automatically update the product list by detecting changes in the
  - **Pattern Used: Observer Pattern**
 The Observer Pattern is heavily used in this feature. Each store (Shop) is observable by Shoppinator. When a store detects a change in its product list, it notifies Shoppinator, which in turn updates the UI with the new products.
 
+![image](https://github.com/user-attachments/assets/38f0f94d-a3ee-4943-9c68-a05661270e75)
+![image](https://github.com/user-attachments/assets/62785967-1ade-4446-9fd8-1597ca6d3a0c)
+![image](https://github.com/user-attachments/assets/9aab1c8c-06e3-481c-9617-9ca8f62bc85b)
+
+
  - **Implementation Details:**
 Stores send notifications when there is an update:
 
@@ -84,6 +103,10 @@ The system uses a Discovery process to dynamically load stores at runtime. This 
  - **Pattern Used: Plugin & Factory Pattern**
 The Plugin Pattern allows each store to be encapsulated in a separate Shop class, which is loaded dynamically during the discovery process. The Factory Pattern is responsible for instantiating these Shop classes at runtime.
 
+![image](https://github.com/user-attachments/assets/bded0c77-9009-462e-82a3-249dc17be008)
+![image](https://github.com/user-attachments/assets/e4569f19-76bc-4649-9ae4-e10b599b62d0)
+
+
  - **Implementation Details:**
 The discovery process uses the following pseudocode to find and load new stores:
 
@@ -95,6 +118,11 @@ function discoverShops(path):
             if class is a Shop:
                 instantiate and add to the system
 ```
+
+![image](https://github.com/user-attachments/assets/b75ce03e-b601-4624-800a-8784fa8caa69)
+
+![image](https://github.com/user-attachments/assets/b12fd0bf-b866-4cc0-babb-6e0f865cf9fc)
+
 
 This approach ensures that new stores can be integrated without recompiling or altering the existing system.
 
@@ -108,11 +136,15 @@ The system is organized into several packages to maintain a clear separation of 
  - `service` .factory: Creates instances of Shoppinator.
  - `shoppinator.core`: Contains the core logic for searching products across multiple stores.
 
+![image](https://github.com/user-attachments/assets/77618894-5d9a-49c0-b4ab-ad12b6ef9368)
+
 ---
 ## **Continuous Integration**
 This project uses continuous integration (CI) to ensure code stability and automated testing. The workflow can be found here:
 
  - Continuous Integration (CI)
+
+
 ---
 
 ## **Installation**
