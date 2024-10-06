@@ -42,13 +42,8 @@ The system allows users to filter the search results by setting a minimum and/or
 
  - **Pattern Used: Criteria Pattern**
 The price filtering functionality is implemented using the Criteria Pattern from [GOF]. A PriceSearchCriteria object is created during the initialization of Shoppinator. The PriceSearchCriteria works as an independent, modular component that can filter products based on price and can easily be extended to handle other criteria in the future.
-
-![image](https://github.com/user-attachments/assets/edc06b85-0325-4faa-8592-8b06a1f6d1a6)
-
-![image](https://github.com/user-attachments/assets/5f1f5f8c-91f6-4e77-8f90-b9c574a6a1dc)
-
 ![image](https://github.com/user-attachments/assets/4fe42d77-6ba3-42b4-823a-fd7a6ec83068)
-
+![image](https://github.com/user-attachments/assets/5f1f5f8c-91f6-4e77-8f90-b9c574a6a1dc)
 
  - **Implementation Details:**
 When a search query is executed, PriceSearchCriteria filters the products by invoking:
@@ -58,6 +53,7 @@ List<Article> filteredProducts = priceCriteria.apply(products);
 ```
 
 This ensures that only the products matching the price range are returned.
+
 ---
 
 ## 3. Select Specific Stores for Product Search
@@ -65,6 +61,8 @@ Shoppinator allows users to specify which stores to include in the search. This 
 
  - **Pattern Used: Factory Pattern & Observer Pattern**
 The Factory Pattern is used to instantiate Shoppinator and load the available stores dynamically. When ShoppinatorFactory is invoked, it performs a Discovery Process to load the stores from a given path. The available stores are stored in a map, and users can select specific stores for searches.
+
+![image](https://github.com/user-attachments/assets/edc06b85-0325-4faa-8592-8b06a1f6d1a6)
 
 The Observer Pattern is used to track changes in the available stores. ShoppinatorCore observes any changes to the stores and updates the active store list accordingly.
 
